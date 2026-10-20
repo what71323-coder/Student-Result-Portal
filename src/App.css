@@ -1,0 +1,352 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eef1f5;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #102b58;
+}
+
+#root {
+  min-height: 100vh;
+  padding: 20px 12px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #fff;
+  border: 5px double #174783;
+  padding: 30px 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Watermark behind the marksheet content */
+.card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 58%;
+  aspect-ratio: 1;
+  top: 29%;
+  left: 21%;
+  background-image: url("./assets/rk_desai_logo_from_design.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+/* College heading */
+.card h1 {
+  text-align: center;
+  color: #123e78;
+  font-size: clamp(26px, 4vw, 48px);
+  font-weight: bold;
+  margin: 8px 0 4px;
+  letter-spacing: 1px;
+}
+
+.card .title {
+  text-align: center;
+  color: #123e78;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 18px 0 24px;
+}
+
+.card hr {
+  border: 0;
+  border-top: 2px solid #244f83;
+  margin: 22px 0;
+}
+
+/* Student details */
+.student-details {
+  text-align: center;
+  margin: 24px 0 30px;
+}
+
+.student-details p {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* Marks table */
+.marks-table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0 36px;
+  font-size: 19px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.marks-table th {
+  background: #194b87;
+  color: white;
+  border: 1px solid #174783;
+  padding: 15px 10px;
+  font-weight: bold;
+}
+
+.marks-table td {
+  border: 1px solid #4672a7;
+  padding: 13px 10px;
+  text-align: center;
+}
+
+.marks-table tbody tr:nth-child(even) {
+  background: rgba(222, 235, 250, 0.7);
+}
+
+/* Result summary */
+.result-summary {
+  width: min(540px, 100%);
+  margin: 0 auto 28px;
+  border: 2px solid #1d579a;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.result-summary p {
+  display: grid;
+  grid-template-columns: 1fr 25px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 22px;
+  margin: 0;
+  font-size: 19px;
+}
+
+.result-summary p:nth-child(odd) {
+  background: rgba(222, 235, 250, 0.6);
+}
+
+.result-summary .colon {
+  text-align: center;
+}
+
+.pass {
+  color: #087b36;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.fail {
+  color: #bd1e1e;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* Signature */
+.sign {
+  text-align: right;
+  margin-top: 34px !important;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Logo header - for the JSX elements */
+.marksheet-header {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.college-logo,
+.university-logo {
+  width: 100%;
+  max-width: 180px;
+  height: 180px;
+  object-fit: contain;
+  justify-self: center;
+}
+
+.marksheet-header h1 {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  #root {
+    padding: 8px;
+  }
+
+  .card {
+    padding: 16px 10px;
+    border-width: 3px;
+  }
+
+  .marksheet-header {
+    grid-template-columns: 65px 1fr 65px;
+    gap: 5px;
+  }
+
+  .college-logo,
+  .university-logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .card h1 {
+    font-size: 19px;
+    letter-spacing: 0;
+  }
+
+  .card .title {
+    font-size: 17px;
+  }
+
+  .student-details p {
+    font-size: 15px;
+  }
+
+  .marks-table {
+    font-size: 13px;
+  }
+
+  .marks-table th,
+  .marks-table td {
+    padding: 9px 3px;
+  }
+
+  .result-summary p {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+
+  .sign {
+    font-size: 14px;
+  }
+}
+
+
+.marksheet-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0 28px;
+}
+
+.marksheet-title h2 {
+  background: linear-gradient(#245a9c, #103d79);
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 28px;
+  margin: 0;
+  border: 3px double white;
+  outline: 2px solid #164a8b;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.title-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #164a8b);
+  position: relative;
+}
+
+.title-line:last-child {
+  background: linear-gradient(to left, transparent, #164a8b);
+}
+
+.title-ornament {
+  position: absolute;
+  right: -2px;
+  top: -14px;
+  color: #164a8b;
+  font-size: 23px;
+}
+
+.title-line:last-child .title-ornament {
+  right: auto;
+  left: -2px;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 600px) {
+  .marksheet-title {
+    gap: 6px;
+  }
+
+  .marksheet-title h2 {
+    font-size: 15px;
+    padding: 7px 10px;
+  }
+
+  .title-ornament {
+    font-size: 16px;
+    top: -10px;
+  }
+}
+
+
+.college-heading h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #000;
+  text-shadow:
+    2px 2px 0 #fff,
+    4px 4px 2px #555;
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+
+/* Same text effect for the complete header */
+.college-heading h1,
+.college-heading h2,
+.college-heading h3,
+.college-heading p {
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  text-shadow:
+    1px 1px 0 #fff,
+    2px 2px 0 #fff,
+    3px 3px 2px #555;
+}
+
+/* Main college name */
+.college-heading h1 {
+  font-size: 42px;
+  letter-spacing: 1px;
+}
+
+/* Group name */
+.college-heading h2 {
+  font-size: 25px;
+}
+
+/* City */
+.college-heading h3 {
+  font-size: 20px;
+}
+
+/* Affiliation text */
+.college-heading p {
+  font-size: 15px;
+  font-weight: 700;
+}
